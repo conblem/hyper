@@ -338,7 +338,7 @@ pub(super) mod sealed {
     where
         S: tower_service::Service<Uri, Response = T> + Send,
         S::Error: Into<Box<dyn StdError + Send + Sync>>,
-        S::Future: Unpin + Send,
+        S::Future: Send,
         T: AsyncRead + AsyncWrite + Connection + Unpin + Send + 'static,
     {
     }
